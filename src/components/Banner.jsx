@@ -10,7 +10,7 @@ const Banner = () => {
     return (
 
  <div
-  className="hero min-h-screen"
+  className="hero container mx-auto"
   style={{
     backgroundImage:
       `url(${banner}))`,

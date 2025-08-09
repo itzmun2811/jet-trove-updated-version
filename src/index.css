@@ -1,2 +1,28 @@
 @import "tailwindcss";
 @plugin "daisyui";
+:root {
+--text: #090508;
+--background: #fcfafc;
+--primary: #b4519c;
+--secondary: #d893c7;
+--accent: #d674be;
+
+}
+.bg-background {
+
+  background-color: var(--accent);
+  color: white;
+};
+.bg-custom{
+ background-color: var(--background);
+}
+
+.button-primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.button-secondary {
+  background-color: var(--secondary);
+  color: white;
+}

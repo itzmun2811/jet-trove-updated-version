@@ -14,7 +14,14 @@ const Header = ({ onToggleTheme, theme }) => {
   <NavLink to="/">Home</NavLink>
   <NavLink className='mx-3' to="/allPackages">All Packages</NavLink>
   <NavLink className='mr-3' to="/about">About Us</NavLink>
-  {user && <NavLink to='/mybookings'>My Bookings</NavLink>}
+  {user && <>
+  <NavLink to='/mybookings'>My Bookings</NavLink>
+  <NavLink className='mx-3' to='/addPackage'>Add Package</NavLink>
+  <NavLink to='/managePackage'>Manage Package
+    </NavLink>
+  </>
+  
+  }
   </>
 
   const handleLogOut=()=>{
@@ -24,8 +31,14 @@ const Header = ({ onToggleTheme, theme }) => {
   }
     return (
        <>
-<div className="navbar w-3/4 md:w-4/5 lg:w-11/12 mx-auto mb-6
- p-0 bg-gradient-to-bl from-sky-700 to-white shadow-sm">
+<div className="navbar w-full bg-background
+ mx-auto mb-6  sticky top-0 z-50 
+   shadow-sm
+ py-1 px-2
+ 
+ 
+ ">
+  <div className='container mx-auto px-4 flex items-center justify-center'>
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -68,17 +81,13 @@ const Header = ({ onToggleTheme, theme }) => {
 </div>
   <ul tabIndex={0} className="dropdown-content menu bg-base-100
    rounded-box z-1 w-32 md:w-44 lg:w-52 p-2 md:mr-4 lg:mr-8 shadow-sm">
-   <li><NavLink to='/addPackage'>Add Package
-    </NavLink>
-    </li>
-   <li><NavLink to='/managePackage'>Manage Package
-    </NavLink></li>
+  
 
        <li><button onClick={handleLogOut}>Logout</button></li> 
   </ul>
 </div>
 
-</> :<> <button className=' btn btn-info'>
+</> :<> <button className=' btn button-primary'>
     <NavLink to="/login" state={{ from: location }}>
   Login
 </NavLink>
@@ -89,7 +98,7 @@ const Header = ({ onToggleTheme, theme }) => {
   
   }
   
-       <button onClick={onToggleTheme} className='bg-sky-700 ml-0 pl-0  lg:ml-2'> 
+       <button onClick={onToggleTheme} className='button-primary ml-0 pl-0  lg:ml-2'> 
        {theme === "light" ? <MdModeNight size={30} /> : 
        <MdOutlineLightMode size={30} />}
       </button>
@@ -100,7 +109,7 @@ const Header = ({ onToggleTheme, theme }) => {
 
   
 
-
+</div>
 </div>
        </>
     );
