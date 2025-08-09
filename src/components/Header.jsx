@@ -38,7 +38,7 @@ const Header = ({ onToggleTheme, theme }) => {
  
  
  ">
-  <div className='container mx-auto px-4 flex items-center justify-center'>
+  <div className='w-11/12 mx-auto px-4 flex items-center justify-center'>
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

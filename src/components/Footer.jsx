@@ -6,7 +6,7 @@ import { BsGithub, BsInstagram } from 'react-icons/bs';
 const Footer = () => {
     return (
     
-    <footer className=" w-3/4 md:w-4/5 lg:w-11/12 mx-auto footer bg-gradient-to-bl from-sky-700
+    <footer className="w-full mx-auto footer bg-background
      to-white footer-vertical md:footer-horizontal lg:footer-horizontal footer-start bg-base-200 text-base-content rounded p-10">
   
   <div className=''>

@@ -1,93 +1,107 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { Bounce, Fade, JackInTheBox, Rotate, Zoom } from 'react-awesome-reveal';
-import { Navigate, useNavigate } from 'react-router';
+import { Fade } from 'react-awesome-reveal';
+import { FaMoneyBillWave } from 'react-icons/fa';
+import { useNavigate } from 'react-router';
 
 const FeaturedPackage = () => {
+  const [packages, setPackages] = useState([]);
+  const navigate = useNavigate();
 
-    const [packages,setPackages]=useState([]);
-     const navigate=useNavigate();
-    
-    useEffect(()=>{
-        axios.get('https://tour-management-server-kappa.vercel.app/featuredData')
-       .then(result=> {
-        console.log(result.data)
-          setPackages(result.data)
+  useEffect(() => {
+    axios
+      .get('https://tour-management-server-kappa.vercel.app/featuredData')
+      .then((result) => {
+        setPackages(result.data);
       })
-      .catch(error=>{
-        console.log(error)})
-     },[])
-    return (
-<div className='mx-auto'>
-   <div className='shadow-lg p-2 rounded-2xl'>
-     <h2 className="lg:text-3xl md:text-2xl text-lg font-bold
-      text-center mt-1 md:mt-2 lg:mt-4 pt-6 text-sky-800">Featured Tour Package</h2>
-<p className="text-center text-gray-600 mb-7 w-2/6 md:w-3/4 lg:w-3/4 mx-auto">
-Embark on an unforgettable journey with our expertly curated travel experience. Guided by professionals, this tour offers comfort, adventure, and culture — all in one.
-</p>
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
-   </div>
+  return (
+    <div className="mx-auto w-full m-4 px-4 sm:px-6 lg:px-8">
 
-           <div className=' bg-gradient-to-tr from-sky-600 to-white
-            mx-auto gap-6 mt-10 grid grid-cols-1 md:grid-cols-2
-             lg:grid-cols-3 items-center justify-center flex-col '>
+      <div className="text-center my-10 w-full">
+        <h2 className="text-3xl font-bold text mb-4">Featured Tour Packages</h2>
+        <p className="max-w-2xl mx-auto custom">
+          Embark on an unforgettable journey with our expertly curated travel experiences. Guided by professionals, each tour offers comfort, adventure, and culture — all in one.
+        </p>
+      </div>
 
-        {
-            packages.map(singlePackage=>(
-
-            <Fade>
- <div className=" m-6 md:m-8 lg:m-10 p-6 w-64 md:w-72 lg:w-80 
-  card bg-base-200  shadow-xl rounded-xl 
-  hover:scale-105">
-  <figure className='flex flex-col p-4'>
- <h2 className="card-title  shadow-xl  pb-1
- text-xl font-semibold text-center my-1
- ">{singlePackage.tourName}</h2>
-    <img className='w-40 h-40 object-cover rounded-t-xl shadow-lg
-    '
-      src={singlePackage.tourImage}
-      alt="Movie" />
-  </figure>
-
-     <div className='p-4 rounded-xl shadow-lg flex  items-center justify-center'>
-  <div className='"flex items-center gap-4 p-4'>
-     <img  className='
-     w-16 h-16 rounded-full object-cover 
-     
-     ' src={singlePackage.guideImage} alt="" />
-    <h1 className='font-semibold'>{singlePackage.guideName}</h1>
-  </div> 
-  <div className='flex flex-col'>
- <h1 className='text-lg text-gray-500"'>Duration-{singlePackage?.duration}</h1>
-     <h1 className='text-lg text-gray-500'>Departure Date-{singlePackage?.departureDate}</h1>
-     <p className='text-lg text-gray-500 font-medium"'>Price-{singlePackage?.price}</p>
-      <button className="btn btn-primary  hover:bg-purple-700 text-white w-full rounded-xl">View Details</button>
-  </div>
-     
-     
-
-
-    </div>
-
-
-
-   
-  </div>
-            </Fade>
+      <div  data-aos="fade-up"
+     data-aos-duration="3000"  className="grid grid-cols-1 md:grid-cols-2 
+     lg:grid-cols-3 gap-10">
+        {packages.map((singlePackage, index) => (
+          <Fade key={index} triggerOnce>
+            <div className="bg-white shadow-xl rounded-xl overflow-hidden transform transition duration-300 hover:scale-105">
  
+              <div className="relative">
+                <img
+                  src={singlePackage.tourImage}
+                  alt={singlePackage.tourName}
+                  className="w-full h-52 object-cover"
+                />
+                <div className="absolute bottom-0 left-0 w-full bg-black/60 px-4 py-2">
+                  <h3 className="text-white text-lg font-semibold">{singlePackage.tourName}</h3>
+                </div>
+              </div>
 
+              <div className="p-4 flex flex-col gap-4">
+         
+                <div className="flex items-center gap-4">
+                  <img
+                    src={singlePackage.guideImage}
+                    alt={singlePackage.guideName}
+                    className="w-14 h-14 rounded-full object-cover"
+                  />
+                  <div>
+                    <h4 className="font-semibold text-black text-base">Guide: {singlePackage.guideName}</h4>
+                  </div>
+                </div>
 
-            ))
-        }
+            
+                <div className="flex flex-wrap gap-4 text-sm text-gray-700">
+                  <div className="flex items-center gap-1">
+                    <span>⏳</span>
+                    <span>{singlePackage?.duration}</span>
+                  </div>
 
-                
+                  <div className="flex items-center gap-1 text-gray-500">
+                    <span>📅</span>
+                    <span>{singlePackage?.departureDate}</span>
+                  </div>
+
+                  <div className="flex items-center gap-1 text-green-600 font-medium">
+                    <FaMoneyBillWave className="text-lg" />
+                    <span>{singlePackage.price}</span>
+                  </div>
+                </div>
+
+            
+                <button
+                  onClick={() => navigate(`/packages/${singlePackage._id}`)}
+                  className="mt-auto w-full button-primary py-2 px-4 bg-sky-600 text-white rounded-lg hover:bg-sky-700 transition"
+                >
+                  View Details
+                </button>
+              </div>
             </div>
+          </Fade>
+        ))}
+      </div>
 
 
-            <button className='btn flex items-center justify-center btn-info mx-auto text-center mt-4 mb-5' onClick={()=>{navigate('/allPackages')}}>Show All</button>
-            </div>
-        
-    );
+      <div className="text-center mt-8">
+        <button
+          className="btn button-secondary px-6 py-2 text-white font-medium hover:bg-sky-700 transition"
+          onClick={() => navigate('/allPackages')}
+        >
+          Show All Packages
+        </button>
+      </div>
+    </div>
+  );
 };
 
 export default FeaturedPackage;

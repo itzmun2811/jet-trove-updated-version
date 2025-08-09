@@ -4,7 +4,15 @@ import { FiStar } from "react-icons/fi";
 
 const Reviews = () => {
     return (
-        <div className='w-11/12 mx-auto'>
+        <div  data-aos="zoom-in-out"
+    data-aos-offset="200"
+    data-aos-delay="50"
+    data-aos-duration="1000"
+    data-aos-easing="ease-in-out"
+    data-aos-mirror="true"
+    data-aos-once="false"
+    data-aos-anchor-placement="top-center"
+     className='w-11/12 mx-auto'>
             <div className='shadow-lg p-2  rounded-2xl'>
      <h2 className="lg:text-3xl md:text-2xl text-xl font-bold text-center 
      mt-4 pt-6 pb-3 text-sky-800">
@@ -22,7 +30,7 @@ our travelers  say about their experiences with us. From breathtaking
    <div className=' w-2/5 md:3/4 lg:w-3/4 mb-12 mx-auto flex flex-col
     justify-center items-center'>
 <Slide>
-<div className='lg:w-[500px] md:w-[500px] w-[300px] mx-auto text-center p-3 rounded-2xl mt-6 mb-6 shadow-2xl bg-gradient-to-br   from-sky-700 to-white'>
+<div className='lg:w-[500px] md:w-[500px] w-[300px] mx-auto text-center p-3 rounded-2xl mt-6 mb-6 shadow-2xl button-secondary'>
      <div>
 <img className='mx-auto p-1 bg-white rounded-xl shadow' 
 src="https://i.ibb.co/3Yrj078Y/download-1.jpg" alt="" />
@@ -82,7 +90,8 @@ src="https://i.ibb.co/3Yrj078Y/download-1.jpg" alt="" />
 </Slide>
 {/*  */}
 <Slide>
-<div className='w-[300px] lg:w-[500px] md:w-[500px] mx-auto text-center p-3 rounded-2xl mt-6 mb-6 shadow-2xl bg-gradient-to-br   from-sky-700 to-white'>
+<div className='w-[300px] lg:w-[500px] md:w-[500px] mx-auto text-center p-3 
+rounded-2xl mt-6 mb-6 shadow-2xl button-secondary'>
      <div>
 <img className='mx-auto w-[200px] h-[200px] p-1 bg-white rounded-xl shadow object-contain' 
 src="https://i.ibb.co/9HTYM7Hp/young-man-traveler-with-backpack-relaxing-outdoor-1421-175.jpg" alt="" />
@@ -143,7 +152,8 @@ src="https://i.ibb.co/9HTYM7Hp/young-man-traveler-with-backpack-relaxing-outdoor
 </Slide>
 {/*  */}
 <Slide>
-<div className='w-[300px] lg:w-[500px] md:w-[500px] mx-auto text-center p-3 rounded-2xl mt-6 mb-6 shadow-2xl bg-gradient-to-br   from-sky-700 to-white'>
+<div className='w-[300px] lg:w-[500px] md:w-[500px] mx-auto text-center p-3
+ rounded-2xl mt-6 mb-6 shadow-2xl button-secondary'>
      <div>
 <img className='mx-auto p-1 bg-white rounded-xl shadow' 
 src="https://i.ibb.co/kgDX2ssQ/images-7.jpg" alt="" />
@@ -203,7 +213,8 @@ src="https://i.ibb.co/kgDX2ssQ/images-7.jpg" alt="" />
 </Slide>
 {/*  */}
 <Slide>
-<div className='w-[300px] lg:w-[500px] md:w-[500px] mx-auto text-center p-3 rounded-2xl mt-6 mb-6 shadow-2xl bg-gradient-to-br   from-sky-700 to-white'>
+<div className='w-[300px] lg:w-[500px] md:w-[500px] mx-auto text-center p-3 
+rounded-2xl mt-6 mb-6 shadow-2xl button-secondary'>
      <div>
 <img className='mx-auto p-1 bg-white rounded-xl shadow' 
 src="https://i.ibb.co/0j0DXWmY/images-90.jpg" alt="" />
