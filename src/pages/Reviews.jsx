@@ -1,283 +1,101 @@
 import React from 'react';
-import { Bounce, Fade, Flip, Roll, Slide } from 'react-awesome-reveal';
-import { FiStar } from "react-icons/fi";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import { FaStar } from 'react-icons/fa';
+
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+const reviews = [
+  {
+    title: "Jaflong Adventure",
+    text: "This was my first solo trip, and I felt so safe and cared for. Highly recommend!",
+    name: "Shamima Akhter",
+    img: "https://i.ibb.co/3Yrj078Y/download-1.jpg",
+  },
+  {
+    title: "Ratargul Swamp Forest",
+    text: "Incredible views and a very professional guide. Booking process was smooth and simple.",
+    name: "Rafiul Islam",
+    img: "https://i.ibb.co/9HTYM7Hp/young-man-traveler-with-backpack-relaxing-outdoor-1421-175.jpg",
+  },
+  {
+    title: "Bandarban Trip",
+    text: "Booking was super simple and fast. I got confirmation within minutes and clear instructions in my email.",
+    name: "Nusrath Jahan",
+    img: "https://i.ibb.co/kgDX2ssQ/images-7.jpg",
+  },
+  {
+    title: "Inani Beach Tour",
+    text: "Absolutely loved our trip to Inani Beach! The guide was amazing and every detail was taken care of.",
+    name: "Ahmed Reja",
+    img: "https://i.ibb.co/0j0DXWmY/images-90.jpg",
+  },
+];
 
 const Reviews = () => {
-    return (
-        <div  data-aos="zoom-in-out"
-    data-aos-offset="200"
-    data-aos-delay="50"
-    data-aos-duration="1000"
-    data-aos-easing="ease-in-out"
-    data-aos-mirror="true"
-    data-aos-once="false"
-    data-aos-anchor-placement="top-center"
-     className='w-11/12 mx-auto'>
-            <div className='shadow-lg p-2  rounded-2xl'>
-     <h2 className="lg:text-3xl md:text-2xl text-xl font-bold text-center 
-     mt-4 pt-6 pb-3 text-sky-800">
-    Loved By Explorers Like You</h2>
-<p className="text-center text-gray-600 mb-7 w-2/5 md:3/4 lg:3/4 mx-auto">Discover what 
-our travelers  say about their experiences with us. From breathtaking
- destinations to caring guides, our guests share real stories that inspire 
- new journeys. Your adventure could be next!
-
-
-</p>
-
-   </div>
-
-   <div className=' w-2/5 md:3/4 lg:w-3/4 mb-12 mx-auto flex flex-col
-    justify-center items-center'>
-<Slide>
-<div className='lg:w-[500px] md:w-[500px] w-[300px] mx-auto text-center p-3 rounded-2xl mt-6 mb-6 shadow-2xl button-secondary'>
-     <div>
-<img className='mx-auto p-1 bg-white rounded-xl shadow' 
-src="https://i.ibb.co/3Yrj078Y/download-1.jpg" alt="" />
-
-<h1 className='text-2xl font-bold text-white py-2'>Shamima Akther</h1>
-     </div>
-     <div className='w-3/4 mx-auto bg-white p-2 rounded-xl shadow-md hover:shadow-lg space-y-4
-     '> <h1><span className='text-2xl font-bold text-sky-600'>Tour-</span>
-     <span className='text-gray-700 font-bold'>Jaflong Adventure</span></h1>
-      <h1><span className='text-xl text-sky-600'>Description-</span>
-      <span className='italic'>This was my first solo trip, and I felt so safe and cared for. 
-      Highly recommend!</span>
-      </h1>
-      <h1><span className='text-xl text-sky-600'>Badge-</span>
-      <span className="bg-sky-100 text-sky-700 px-2 py-1 rounded-full
-         text-md font-medium ml-2">#First Time Traveler</span>
-      </h1>
-      <h1>
-        <div className='flex  flex-col lg:flex-row md:flex-row items-center justify-center'>
-        <span className='text-xl text-sky-600'>Catagory Ratings-</span>
-       
-      <ul className='p-2 shadow m-1'>
-       
- <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Guide:</span>
-             <span>5</span>  <FiStar fill="orange" className="text-yellow-500" size={24} /> 
-         
-          </li>
-      
-       <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Transport:</span>
-          <span>5</span>  <FiStar fill="orange" className="text-yellow-500" size={24} /> 
-            
-          </li>
-      
-       <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Value:</span>
-          <span>5</span>  <FiStar fill="orange" className="text-yellow-500" size={24} /> 
-            
-          </li>
-      
-       <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Accomodation:</span>
-           <span>4</span>   <FiStar fill="orange" className="text-yellow-500" size={24} />
-             
-          </li>
-      
-       
-       
-      </ul>
+  return (
+    <div
+      data-aos="fade-up"
+      data-aos-anchor-placement="center-bottom"
+      className="w-11/12 mx-auto my-12"
+    >
+      <div className="shadow-lg p-6 rounded-2xl bg-white">
+        <h2 className="text-center text-pink-700 font-bold text-xl md:text-2xl lg:text-3xl mb-4">
+          Loved By Explorers Like You
+        </h2>
+        <p className="text-center text-gray-600 max-w-3xl mx-auto mb-6">
+          Discover what our travelers say about their experiences with us. From breathtaking
+          destinations to caring guides, our guests share real stories that inspire new journeys.
+          Your adventure could be next!
+        </p>
       </div>
-      </h1>
 
-    
-     </div>
-</div>
-</Slide>
-{/*  */}
-<Slide>
-<div className='w-[300px] lg:w-[500px] md:w-[500px] mx-auto text-center p-3 
-rounded-2xl mt-6 mb-6 shadow-2xl button-secondary'>
-     <div>
-<img className='mx-auto w-[200px] h-[200px] p-1 bg-white rounded-xl shadow object-contain' 
-src="https://i.ibb.co/9HTYM7Hp/young-man-traveler-with-backpack-relaxing-outdoor-1421-175.jpg" alt="" />
-
-<h1 className='text-2xl font-bold text-white py-2'>Rafiul Islam</h1>
-     </div>
-     <div className='w-4/5 mx-auto bg-white p-1 rounded-xl shadow-md hover:shadow-lg space-y-4
-     '> <h1><span className='text-2xl font-bold text-sky-600'>Tour-</span>
-     <span className='text-gray-700 font-bold'>Ratargul Swamp Forest
-        </span></h1>
-      <h1><span className='text-xl text-sky-600'>Description-</span>
-      <span className='italic'>Incredible views and a very professional guide. Booking process was smooth and simple
-      </span>
-      </h1>
-      <h1><span className='text-xl text-sky-600'>Badge-</span>
-      <span className="bg-sky-100 text-sky-700 px-2 py-1 rounded-full
-         text-md font-medium ml-2">#Global Explorer</span>
-      </h1>
-      <h1>
-        <div className='flex  flex-col lg:flex-row md:flex-row items-center justify-center'>
-        <span className='text-xl text-sky-600'>Catagory Ratings-</span>
-       
-      <ul className='p-2 shadow m-1'>
-       
- <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Guide:</span>
-             <span>5</span>  <FiStar fill="orange" className="text-yellow-500" size={24} /> 
-         
-          </li>
-      
-       <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Transport:</span>
-          <span>4</span>  <FiStar fill="orange" className="text-yellow-500" size={24} /> 
+      <Swiper
+        modules={[Autoplay, Pagination]}
+        autoplay={{ delay: 3500, disableOnInteraction: false }}
+        pagination={{ clickable: true }}
+        spaceBetween={30}
+        loop={true}
+        breakpoints={{
+          640: { slidesPerView: 1 },
+          768: { slidesPerView: 2 },
+          1024: { slidesPerView: 3 },
+        }}
+        className="mt-12"
+      >
+        {reviews.map((review) => (
+          <SwiperSlide >
+            <div className="text-center p-6 max-w-sm mx-auto">
+              
+              <div className="relative w-72 h-72 mx-auto text-white rounded-full button-secondary flex flex-col justify-center items-center shadow-md">
+                <h3 className="text-xl font-bold border-b pb-1">{review.title}</h3>
+                <p className="italic text-sm mt-3 px-4">{review.text}</p>
+                <div className="flex justify-center mt-4 space-x-1">
+                
+                    <FaStar  size={20} fill="orange" />
+                    <FaStar size={20} fill="orange" />
+                    <FaStar size={20} fill="orange" />
+                    <FaStar  size={20} fill="orange" />
+                    <FaStar  size={20} fill="orange" />
             
-          </li>
-      
-       <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Value:</span>
-          <span>5</span>  <FiStar fill="orange" className="text-yellow-500" size={24} /> 
-            
-          </li>
-      
-       <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Accomodation:</span>
-           <span>4</span>   <FiStar fill="orange" className="text-yellow-500" size={24} />
-             
-          </li>
-      
-       
-       
-      </ul>
-      </div>
-      </h1>
+                </div>
 
-    
-     </div>
-</div>
-</Slide>
-{/*  */}
-<Slide>
-<div className='w-[300px] lg:w-[500px] md:w-[500px] mx-auto text-center p-3
- rounded-2xl mt-6 mb-6 shadow-2xl button-secondary'>
-     <div>
-<img className='mx-auto p-1 bg-white rounded-xl shadow' 
-src="https://i.ibb.co/kgDX2ssQ/images-7.jpg" alt="" />
-
-<h1 className='text-2xl font-bold text-white py-2'>Nusrath Jahan</h1>
-     </div>
-     <div className='w-3/4 mx-auto bg-white p-2 rounded-xl shadow-md hover:shadow-lg space-y-4
-     '> <h1><span className='text-2xl font-bold text-sky-600'>Tour-</span>
-     <span className='text-gray-700 font-bold'>Bandarban Trip</span></h1>
-      <h1><span className='text-xl text-sky-600'>Description-</span>
-      <span className='italic'>
-        Booking was super simple and fast. I got confirmation within minutes and clear instructions in my email.</span>
-      </h1>
-      <h1><span className='text-xl text-sky-600'>Badge-</span>
-      <span className="bg-sky-100 text-sky-700 px-2 py-1 rounded-full
-         text-md font-medium ml-2">#Frequent Traveler</span>
-      </h1>
-      <h1>
-        <div className='flex  flex-col lg:flex-row md:flex-row items-center justify-center'>
-        <span className='text-xl text-sky-600'>Catagory Ratings-</span>
-       
-      <ul className='p-2 shadow m-1'>
-       
- <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Guide:</span>
-             <span>5</span>  <FiStar fill="orange" className="text-yellow-500" size={24} /> 
-         
-          </li>
-      
-       <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Transport:</span>
-          <span>4</span>  <FiStar fill="orange" className="text-yellow-500" size={24} /> 
-            
-          </li>
-      
-       <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Value:</span>
-          <span>5</span>  <FiStar fill="orange" className="text-yellow-500" size={24} /> 
-            
-          </li>
-      
-       <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Accomodation:</span>
-           <span>4</span>   <FiStar fill="orange" className="text-yellow-500" size={24} />
-             
-          </li>
-      
-       
-       
-      </ul>
-      </div>
-      </h1>
-
-    
-     </div>
-</div>
-</Slide>
-{/*  */}
-<Slide>
-<div className='w-[300px] lg:w-[500px] md:w-[500px] mx-auto text-center p-3 
-rounded-2xl mt-6 mb-6 shadow-2xl button-secondary'>
-     <div>
-<img className='mx-auto p-1 bg-white rounded-xl shadow' 
-src="https://i.ibb.co/0j0DXWmY/images-90.jpg" alt="" />
-
-<h1 className='text-2xl font-bold text-white py-2'>Ahmed Reja</h1>
-     </div>
-     <div className='w-3/4 mx-auto bg-white p-2 rounded-xl shadow-md 
-     hover:shadow-lg space-y-4
-     '> <h1><span className='text-2xl font-bold text-sky-600'>Tour-</span>
-     <span className='text-gray-700 font-bold'>Inani Beach Tour</span></h1>
-      <h1><span className='text-xl text-sky-600'>Description-</span>
-      <span className='italic'>Absolutely loved our trip to Inani Beach! The guide was amazing and every
-         detail was taken care of.
-        </span>
-      </h1>
-      <h1><span className='text-xl text-sky-600'>Badge-</span>
-      <span className="bg-sky-100 text-sky-700 px-2 py-1 rounded-full
-         text-md font-medium ml-2">#Verified Traveler</span>
-      </h1>
-      <h1>
-        <div className='flex flex-col lg:flex-row md:flex-row items-center justify-center'>
-        <span className='text-xl text-sky-600'>Catagory Ratings-</span>
-       
-      <ul className='p-2 shadow m-1'>
-       
- <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Guide:</span>
-             <span>5</span>  <FiStar fill="orange" className="text-yellow-500" size={24} /> 
-         
-          </li>
-      
-       <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Transport:</span>
-          <span>4</span>  <FiStar fill="orange" className="text-yellow-500" size={24} /> 
-            
-          </li>
-      
-       <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Value:</span>
-          <span>5</span>  <FiStar fill="orange" className="text-yellow-500" size={24} /> 
-            
-          </li>
-      
-       <li className="flex items-center gap-2">
-            <span className="w-32 text-gray-700 font-medium">Accomodation:</span>
-           <span>4</span>   <FiStar fill="orange" className="text-yellow-500" size={24} />
-             
-          </li>
-      
-       
-       
-      </ul>
-      </div>
-      </h1>
-
-    
-     </div>
-</div>
-</Slide>
-</div>
-
-        </div>
-    );
+                <div className="absolute bottom-3 left-3 flex items-center space-x-2">
+                  <img
+                    src={review.img}
+                    alt={review.name}
+                    className="w-18 h-18 rounded-full border-2 border-white shadow-md"
+                  />
+                  <span className="text-white font-semibold text-sm">{review.name}</span>
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </div>
+  );
 };
 
 export default Reviews;
