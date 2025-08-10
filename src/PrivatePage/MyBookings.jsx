@@ -4,120 +4,103 @@ import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
 
 const MyBookings = () => {
-    const {user} =use(AuthContext)
-    const[booking,setBooking]=useState([])
+  const { user } = use(AuthContext);
+  const [booking, setBooking] = useState([]);
 
-  useEffect(()=>{
+  useEffect(() => {
+    axios
+      .get(`https://tour-management-server-kappa.vercel.app/booking?email=${user.email}`, {
+        headers: {
+          authorization: `Bearer ${user.accessToken}`,
+        },
+      })
+      .then((result) => {
+        setBooking(result.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [user]);
 
-     axios.get(`https://tour-management-server-kappa.vercel.app/booking?email=${user.email}`,{
-        headers:{
-            authorization :`Bearer ${user.accessToken}`
+  const handleConfirm = (id) => {
+    axios
+      .patch(
+        `https://tour-management-server-kappa.vercel.app/booking/${id}?email=${user.email}`,
+        {},
+        {
+          headers: {
+            authorization: `Bearer ${user.accessToken}`,
+          },
         }
-     })
-            .then(result=>{
-                console.log(result.data)
-                setBooking(result.data)
-        
-            })
-            .catch(error=>{
-                 console.log(error)
-            })
-
-        },[user,setBooking])
- console.log(booking)
- 
-    const handleConfirm=(id)=>{
-        axios.patch(`https://tour-management-server-kappa.vercel.app/booking/${id}?email=${user.email}`,{},{
-            headers:{
-                authorization:`Bearer ${user.accessToken}`
-            }
-        })
-        .then(result=>{
-            console.log(result.data)
-            toast.success('status updated sucessfully')
-    setBooking(prev =>prev.map(item =>
-        item._id === id ? { ...item, status: 'completed' } : item
       )
-    );
-  
-        })
-        .catch(error=>{
-            console.log(error)
-        })
-    }
-    
+      .then((result) => {
+        toast.success('Status updated successfully');
+        setBooking((prev) =>
+          prev.map((item) => (item._id === id ? { ...item, status: 'completed' } : item))
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-    return (
-        <div className='w-11/12 mx-auto mt-6 p-8 pb-6'>
-            <h1 className='text-2xl font-bold text-center'>
-                My Bookings -{booking.length}
-            </h1>
+  return (
+    <div className="w-11/12 mx-auto mt-10 p-6">
+      <h1 className="text-3xl font-bold text-center text-pink-600 mb-6">
+        My Bookings 
+      </h1>
 
-<div className="overflow-x-auto">
-  <table className="table">
-    {/* head */}
-    <thead>
-       <tr>
-      
-        <th>Tour Name</th>
-        <th>Guide name</th>
-        <th>Guide Contact</th>
-        <th>Departure Date</th>
-        <th>Departure Location</th>
-        <th>Destination</th>
-        <th>Special Note</th>
-        <th>Action </th>
-      </tr>
-    </thead>
-    <tbody>
-      {/* row 1 */}
-     
-        {booking.map((book) => (
-  <tr>
-    <td>{book['tour-name']}</td>
-    <td>{book.guideName}</td>
-    <td>{book.guideContact}</td>
-    <td>{book.date}</td>
-    <td>{book.location}</td>
-    <td>{book.destination}</td>
-    <td>{book.note}</td>
-    <td>
-      {book.status === "pending" ? (
-        <button className="btn btn-sm btn-primary " onClick={()=>handleConfirm(book._id)}>Confirm</button>
-      ) : (
-        <span className="text-green-500 font-semibold">Completed</span>
-      )}
-    </td>
-  </tr>
+      <div className="overflow-x-auto bg-white rounded-xl shadow-md">
+        <table className="table w-full text-sm">
+          <thead className="bg-pink-100 text-pink-700 text-md">
+            <tr>
+              <th>Tour Name</th>
+              <th>Guide Name</th>
+              <th>Contact</th>
+              <th>Departure Date</th>
+              <th>Location</th>
+              <th>Destination</th>
+              <th>Note</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            {booking.map((book, index) => (
+              <tr
+                key={book._id}
+                className="hover:bg-pink-50 transition-all duration-200"
+                data-aos="zoom-in-left"
+              >
+                <td className="text-pink-600 font-medium">{book['tour-name']}</td>
+                <td className="text-pink-400">{book.guideName}</td>
+                <td className="text-pink-400">{book.guideContact}</td>
+                <td className="text-pink-400">{book.date}</td>
+                <td className="text-pink-400">{book.location}</td>
+                <td className="text-pink-400">{book.destination}</td>
+                <td className="text-pink-400">{book.note || '—'}</td>
+                <td>
+                  {book.status === 'pending' ? (
+                    <button
+                      onClick={() => handleConfirm(book._id)}
+                      className="btn btn-sm bg-pink-600 text-white hover:bg-pink-700"
+                    >
+                      Confirm
+                    </button>
+                  ) : (
+                    <span className="text-green-600 font-semibold">Completed</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-    
-       
-      
-
-
-      ))}
-      
-     
-    </tbody>
-  </table>
-</div>
-
-
-
-
-
-
-      
-
-      
-      
-     
-     
-    
-    
-
-        </div>
-    );
+        {booking.length === 0 && (
+          <p className="text-center text-pink-400 py-4">No bookings found.</p>
+        )}
+      </div>
+    </div>
+  );
 };
 
 export default MyBookings;

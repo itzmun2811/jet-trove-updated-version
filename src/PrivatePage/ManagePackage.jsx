@@ -61,12 +61,12 @@ const handleDelete = (id) => {
 
 
     return (
-        <div className='w-11/12 mx-auto max-w-6xl'>
+        <div className='w-11/12 mx-auto max-w-6xl my-12'>
             
-            <h1 className='text-2xl font-bold text-center pt-8 '>Manage Your Packages</h1>
-            <p className='text-lg text-gray-500 text-center pb-6'>Keep your tours fresh and exciting! Update your package info, add new destinations,
+            <h1 className='text-2xl font-bold text-center pt-8 text-pink-600 '>Manage Your Packages</h1>
+            <p className='text-lg text-pink-400 text-center pb-6'>Keep your tours fresh and exciting! Update your package info, add new destinations,
              or remove ones that are no longer active.</p>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto py-12">
   <table className="table">
     {/* head */}
     <thead>
@@ -75,7 +75,7 @@ const handleDelete = (id) => {
 
 
         
-      <tr>
+      <tr className='text-pink-600'>
     
         <th>Tour Name</th>
         <th>Duration</th>
@@ -90,7 +90,7 @@ const handleDelete = (id) => {
       {/* row 1 */}
     
         {info.map(data=>(
-  <tr className="bg-base-200">
+  <tr className="bg-base-200 text-pink-400">
         <th>{data['tour-name']}</th>
         <th>{data.duration}</th>
         <th>{data.price}</th>
@@ -98,10 +98,10 @@ const handleDelete = (id) => {
         <td>{data.image}</td>
       
         <td>
-       <button className="btn" onClick={()=> handleUpdate(data._id)} >
+       <button className="btn button-primary" onClick={()=> handleUpdate(data._id)} >
         <NavLink to='/updatePackage'>Update</NavLink>
     </button>
-       <button onClick={()=>handleDelete(data._id)} className="btn">Delete</button>
+       <button onClick={()=>handleDelete(data._id)} className="btn mr-2 button-secondary">Delete</button>
 
         </td>
 

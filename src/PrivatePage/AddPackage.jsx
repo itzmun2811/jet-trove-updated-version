@@ -35,76 +35,83 @@ const AddPackage = () => {
         })
      }
     return (
-        <>
+        <div className='my-8'>
 
-  <h1 className='text-xl font-bold text-center mt-8 '>Add Tour Package</h1>
-      <div>
-<div className='w-[400px] mx-auto'>
-    <img className='w-3/4 mx-auto' src={img} alt="" />
-</div>
+  <h1 data-aos="zoom-out" className='text-xl text-pink-600 font-bold text-center py-4 '>Add Tour Package</h1>
+      <div className='py-4' data-aos="fade-in-right">
+
 
 <form onSubmit={handleFormSubmit}>
-<div className="bg-base-200 w-11/12 mx-auto text-center">
+<div className="bg-base-200 w-11/12 mx-auto text-center m">
 
    
-    <div className="card bg-base-100 shadow-2xl">
+    <div className="card bg-base-100 ">
       <div className="card-body">
-        <fieldset className="fieldset text-center font-bold text-[16px] p-4">
+     <fieldset className="fieldset text-center font-bold text-[16px] p-4">
 
+  <div className='flex gap-4 items-center'>
+    <label className="label text-pink-600">Tour Name -</label>
+    <input type="text" name='tour-name' className="input text-pink-400" placeholder="Tour Name" />
+  </div>
 
+  <div className='flex gap-4 items-center '>
+    <label className="label text-pink-600">Image</label>
+    <input type="text" name='image' className="input text-pink-400" placeholder="image" />
+  </div>
 
-            <div className='flex gap-4 items-center'>
-                <label className="label">Tour Name -</label>
-               <input type="text" name='tour-name' className="input" placeholder="Tour Name" />
-            </div>
-            <div className='flex gap-4 items-center '>
-                <label className="label">Image</label>
-               <input type="text" name='image' className="input" placeholder="image" />
-            </div>
-            <div className='flex gap-4'>
-                <label className="label">Duration</label>
-               <input type="text" name='duration' className="input" placeholder="duration" />
-            </div>
-            <div className='flex gap-4'>
-                <label className="label">Departure Location</label>
-               <input type="text" name='location' className="input" placeholder="departure-Location" />
-            </div>
-            <div className='flex gap-4'>
-                <label className="label">Destination</label>
-               <input type="text" name='destination' className="input" placeholder="destination" />
-            </div>
-            <div className='flex gap-4'>
-                <label className="label">price</label>
-               <input type="text" name='price' className="input" placeholder="price" />
-            </div>
-          <div className='flex gap-4'>
-                <label className="label">Departure Date</label>
-                <input type="text" name='date' className="input" placeholder="departure-date" />
-            </div>
-          <div className='flex gap-4'>
-                <label className="label">Package Details</label>
-                <input type="text" name='details' className="input" placeholder="Package-details" />
-            </div>
-          <div className='flex gap-4'>
-                <label className="label">Contact No</label>
-                <input type="text" name='contact' className="input" placeholder="contact-no" />
-            </div>
-          <div className='flex gap-4'>
-                <label className="label">Guide Name</label>
-                <input type="text" name='guide-name' className="input" defaultValue={user.displayName} />
-            </div>
-          <div className='flex gap-4'>
-                <label className="label">Guide Photo</label>
-                <input type="text" name='guide-photo' className="input" defaultValue={user.photoURL} />
-            </div>
-          <div className='flex gap-4'>
-                <label className="label">Guide Email</label>
-                <input type="text" name='guide-email' className="input" defaultValue={user.email
-                } />
-            </div>
-      
-        </fieldset>
-        <button className='btn btn-neutral w-1/2' type="submit">add package</button>
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Duration</label>
+    <input type="text" name='duration' className="input text-pink-400" placeholder="duration" />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Departure Location</label>
+    <input type="text" name='location' className="input text-pink-400" placeholder="departure-Location" />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Destination</label>
+    <input type="text" name='destination' className="input text-pink-400" placeholder="destination" />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Price</label>
+    <input type="text" name='price' className="input text-pink-400" placeholder="price" />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Departure Date</label>
+    <input type="text" name='date' className="input text-pink-400" placeholder="departure-date" />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Package Details</label>
+    <input type="text" name='details' className="input text-pink-400" placeholder="Package-details" />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Contact No</label>
+    <input type="text" name='contact' className="input text-pink-400" placeholder="contact-no" />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Guide Name</label>
+    <input type="text" name='guide-name' className="input text-pink-400" defaultValue={user.displayName} />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Guide Photo</label>
+    <input type="text" name='guide-photo' className="input text-pink-400" defaultValue={user.photoURL} />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Guide Email</label>
+    <input type="text" name='guide-email' className="input text-pink-400" defaultValue={user.email} />
+  </div>
+
+</fieldset>
+
+        <button className='btn button-primary w-1/2' type="submit">add package</button>
       </div>
     </div>
   </div>
@@ -113,7 +120,7 @@ const AddPackage = () => {
 
       </div>
             
-        </>
+        </div>
     );
 };
 

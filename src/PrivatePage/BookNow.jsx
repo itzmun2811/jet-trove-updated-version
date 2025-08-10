@@ -1,134 +1,156 @@
 import React, { use, useEffect, useState } from 'react';
-import {  useParams } from 'react-router';
+import { useParams } from 'react-router';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { MdTour } from 'react-icons/md';
-
 
 const BookNow = () => {
-    const {id}=useParams();
-    const {user}=use(AuthContext);
-    const [loading,setLoading]=useState(true);
-    const[bookInfo,setBookInfo] =useState(null);
-    const date= new Date().toLocaleDateString();
+  const { id } = useParams();
+  const { user } = use(AuthContext);
+  const [loading, setLoading] = useState(true);
+  const [bookInfo, setBookInfo] = useState(null);
+  const date = new Date().toLocaleDateString();
 
-    useEffect(()=>{
-         setLoading(true);
-    axios.get(`https://tour-management-server-kappa.vercel.app/addPackage/${id}`)
-    .then(result=>{
-        console.log(result.data)
+  useEffect(() => {
+    setLoading(true);
+    axios
+      .get(`https://tour-management-server-kappa.vercel.app/addPackage/${id}`)
+      .then((result) => {
         setBookInfo(result.data);
-        setLoading(false)
-    })
-    .catch(error=>{
-        console.log(error)
-        setLoading(false)
-    })
-    
-  },[id])
+        setLoading(false);
+      })
+      .catch((error) => {
+        console.log(error);
+        setLoading(false);
+      });
+  }, [id]);
 
-console.log(bookInfo)
-    const handleBooking=(e)=>{
-       e.preventDefault();
-       const form=e.target;
-       const formdata = new FormData(form);
-        const Bookings= Object.fromEntries(formdata.entries());
+  const handleBooking = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const Bookings = Object.fromEntries(formData.entries());
 
-        
+    const newBookings = {
+      ...Bookings,
+      status: 'pending',
+      tourId: bookInfo._id,
+      guideName: bookInfo['guide-name'],
+      guideEmail: bookInfo['guide-email'],
+      guideContact: bookInfo.contact,
+      location: bookInfo.location,
+      destination: bookInfo.destination,
+    };
 
-         const newBookings={
-            ...Bookings,
-            status:'pending',
-            tourId:bookInfo._id ,
-            guideName:bookInfo['guide-name'],
-            guideEmail:bookInfo['guide-email'],
-            guideContact:bookInfo.contact,
-            location:bookInfo.location,
-            destination:bookInfo.destination,
-            
-         }
-
-         console.log(newBookings)
-        axios.post(`https://tour-management-server-kappa.vercel.app/booking?email=${user.email}`,newBookings,{
-             headers:{
-            authorization :`Bearer ${user.accessToken}`
+    axios
+      .post(
+        `https://tour-management-server-kappa.vercel.app/booking?email=${user.email}`,
+        newBookings,
+        {
+          headers: {
+            authorization: `Bearer ${user.accessToken}`,
+          },
         }
-        })
-        .then(result=>{
-            console.log(result.data)
-            toast.success('booking added sucessfully')
-        })
-        .catch(error=>{
-            console.log(error)
-        })
+      )
+      .then(() => toast.success('Booking added successfully'))
+      .catch((error) => console.log(error));
+  };
 
-
-         
-
-    }
-if (!bookInfo) return <p className='mx-auto p-2 w-11/12'>Loading...
-it may take some time ...plz wait</p>;
-if (loading) return <p>Loading...</p>;
+  if (!bookInfo || loading) {
     return (
-
-        
-        <div className='w-11/12 mx-auto'>
-            <h1 className='text-3xl font-bold text-center text-sky-600 
-            shadow-2xl'>Book Now</h1>
-
-           
-            <form onSubmit={handleBooking}>
-<div className="bg-base-200 w-11/12 mx-auto text-center">
-
-   
-    <div className="card bg-base-100 shadow-2xl">
-      <div className="card-body">
-        <fieldset className="fieldset text-center font-bold text-[16px] p-4">
-
-
-
-            <div className='flex gap-4 items-center'>
-                <label className="label">Tour Name -</label>
-               <input type="text" name='tour-name' className="input"
-                readOnly value={bookInfo?.['tour-name'] || ''} />
-            </div>
-            <div className='flex gap-4'>
-                <label className="label">price</label>
-               <input type="text" name='price' className="input" 
-               readOnly value={bookInfo.price} />
-            </div>
-          <div className='flex gap-4'>
-                <label className="label">Booking Date</label>
-                <input type="text" name='date' className="input" 
-                defaultValue={date} />
-            </div>
-         
-     
-          <div className='flex gap-4'>
-                <label className="label">Buyer Name</label>
-                <input type="text" name='buyer-name' 
-                className="input" defaultValue={user?.displayName}/>
-            </div>
-          <div className='flex gap-4'>
-                <label className="label">Buyer Email</label>
-                <input type="text" name='buyer-email'
-                 className="input" defaultValue={user?.email} />
-            </div>
-          <fieldset className="fieldset">
-  <legend className="fieldset-legend text-start">Special Note</legend>
-  <textarea className="textarea h-24" name='note' placeholder="special note"></textarea>
- 
-</fieldset>
-      
-        </fieldset>
-        <button  className='btn btn-neutral w-1/2' type="submit">Book now</button>
-      </div>
-    </div>
-  </div>
-</form>
-        </div>
+      <p className="text-center w-11/12 mx-auto p-4">Loading... Please wait</p>
     );
+  }
+
+  return (
+    <div className="w-11/12 mx-auto">
+      <h1 className="text-3xl font-bold text-center text-pink-600 shadow-2xl mb-6">
+        Book Now
+      </h1>
+
+      <form onSubmit={handleBooking}>
+        <div className="bg-base-200 w-full mx-auto text-center py-6 px-4 rounded-xl shadow">
+          <div className="card bg-base-100 shadow-xl p-6 max-w-3xl mx-auto">
+            <div className="card-body space-y-4 text-left">
+              {/* Tour Name */}
+              <div className="flex flex-col">
+                <label className="text-pink-600 font-semibold">Tour Name</label>
+                <input
+                  type="text"
+                  name="tour-name"
+                  className="input text-pink-400"
+                  readOnly
+                  value={bookInfo?.['tour-name'] || ''}
+                />
+              </div>
+
+              {/* Price */}
+              <div className="flex flex-col">
+                <label className="text-pink-600 font-semibold">Price</label>
+                <input
+                  type="text"
+                  name="price"
+                  className="input text-pink-400"
+                  readOnly
+                  value={bookInfo?.price}
+                />
+              </div>
+
+              {/* Booking Date */}
+              <div className="flex flex-col">
+                <label className="text-pink-600 font-semibold">Booking Date</label>
+                <input
+                  type="text"
+                  name="date"
+                  className="input text-pink-400"
+                  defaultValue={date}
+                />
+              </div>
+
+              {/* Buyer Name */}
+              <div className="flex flex-col">
+                <label className="text-pink-600 font-semibold">Buyer Name</label>
+                <input
+                  type="text"
+                  name="buyer-name"
+                  className="input text-pink-400"
+                  defaultValue={user?.displayName}
+                />
+              </div>
+
+              {/* Buyer Email */}
+              <div className="flex flex-col">
+                <label className="text-pink-600 font-semibold">Buyer Email</label>
+                <input
+                  type="text"
+                  name="buyer-email"
+                  className="input text-pink-400"
+                  defaultValue={user?.email}
+                />
+              </div>
+
+              {/* Special Note */}
+              <div className="flex flex-col">
+                <label className="text-pink-600 font-semibold">Special Note</label>
+                <textarea
+                  className="textarea h-24 text-pink-400"
+                  name="note"
+                  placeholder="Write a special note"
+                ></textarea>
+              </div>
+
+              {/* Submit */}
+              <div className="text-center mt-6">
+                <button type="submit" className="btn btn-neutral w-1/2">
+                  Book Now
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  );
 };
 
 export default BookNow;

@@ -61,71 +61,70 @@ const UpdatePackage = () => {
    
     <div className="card bg-base-100 shadow-2xl">
       <div className="card-body">
-        <fieldset className="fieldset text-center font-bold text-[16px] p-4">
+   <fieldset className="fieldset text-center font-bold text-[16px] p-4">
 
+  <div className='flex gap-4 items-center'>
+    <label className="label text-pink-600">Tour Name -</label>
+    <input type="text" name='tour-name' className="input text-pink-400" defaultValue={formData['tour-name']} />
+  </div>
 
+  <div className='flex gap-4 items-center '>
+    <label className="label text-pink-600">Image</label>
+    <input type="text" name='image' className="input text-pink-400" defaultValue={formData.image} />
+  </div>
 
-            <div className='flex gap-4 items-center'>
-                <label className="label">Tour Name -</label>
-               <input type="text" name='tour-name' className="input"
-             defaultValue={formData['tour-name']} />
-            </div>
-            <div className='flex gap-4 items-center '>
-                <label className="label">Image</label>
-               <input type="text" name='image' className="input"
-                defaultValue={formData.image} />
-            </div>
-            <div className='flex gap-4'>
-                <label className="label">Duration</label>
-               <input type="text" name='duration' className="input"
-             defaultValue={formData.duration} />
-            </div>
-            <div className='flex gap-4'>
-                <label className="label">Departure Location</label>
-               <input type="text" name='location' className="input" 
-             defaultValue={formData.location} />
-            </div>
-            <div className='flex gap-4'>
-                <label className="label">Destination</label>
-               <input type="text" name='destination' className="input" 
-                defaultValue={formData.destination}  />
-            </div>
-            <div className='flex gap-4'>
-                <label className="label">price</label>
-               <input type="text" name='price' className="input"
-             defaultValue={formData.price}  />
-            </div>
-          <div className='flex gap-4'>
-                <label className="label">Departure Date</label>
-                <input type="text" name='date' className="input"
-                  defaultValue={formData.date}  />
-            </div>
-          <div className='flex gap-4'>
-                <label className="label">Package Details</label>
-                <input type="text" name='details' className="input" 
-                 defaultValue={formData.details}  />
-            </div>
-          <div className='flex gap-4'>
-                <label className="label">Contact No</label>
-                <input type="text" name='contact' className="input" 
-                 defaultValue={formData.contact}  />
-            </div>
-          <div className='flex gap-4'>
-                <label className="label">Guide Name</label>
-                <input type="text" name='guide-name' className="input"
-                 defaultValue={user.displayName} />
-            </div>
-          <div className='flex gap-4'>
-                <label className="label">Guide Photo</label>
-                <input type="text" name='guide-photo' className="input" defaultValue={user.photoURL} />
-            </div>
-          <div className='flex gap-4'>
-                <label className="label">Guide Email</label>
-                <input type="text" name='guide-email' className="input" defaultValue={user.email
-                } />
-            </div>
-      
-        </fieldset>
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Duration</label>
+    <input type="text" name='duration' className="input text-pink-400" defaultValue={formData.duration} />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Departure Location</label>
+    <input type="text" name='location' className="input text-pink-400" defaultValue={formData.location} />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Destination</label>
+    <input type="text" name='destination' className="input text-pink-400" defaultValue={formData.destination} />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Price</label>
+    <input type="text" name='price' className="input text-pink-400" defaultValue={formData.price} />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Departure Date</label>
+    <input type="text" name='date' className="input text-pink-400" defaultValue={formData.date} />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Package Details</label>
+    <input type="text" name='details' className="input text-pink-400" defaultValue={formData.details} />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Contact No</label>
+    <input type="text" name='contact' className="input text-pink-400" defaultValue={formData.contact} />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Guide Name</label>
+    <input type="text" name='guide-name' className="input text-pink-400" defaultValue={user.displayName} />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Guide Photo</label>
+    <input type="text" name='guide-photo' className="input text-pink-400" defaultValue={user.photoURL} />
+  </div>
+
+  <div className='flex gap-4'>
+    <label className="label text-pink-600">Guide Email</label>
+    <input type="text" name='guide-email' className="input text-pink-400" defaultValue={user.email} />
+  </div>
+
+</fieldset>
+
         <button className='btn btn-neutral w-1/2' type="submit">update</button>
       </div>
     </div>

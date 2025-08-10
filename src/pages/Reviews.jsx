@@ -40,7 +40,7 @@ const Reviews = () => {
       data-aos-anchor-placement="center-bottom"
       className="w-11/12 mx-auto my-12"
     >
-      <div className=" rounded-2xl bg-white">
+      <div className=" rounded-2xl ">
         <h2 className="text-center text-pink-700 font-bold text-xl md:text-2xl lg:text-3xl mb-4">
           Loved By Explorers Like You
         </h2>

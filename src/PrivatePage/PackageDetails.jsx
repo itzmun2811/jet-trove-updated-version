@@ -4,92 +4,125 @@ import { useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../context/AuthContext';
 
 const PackageDetails = () => {
-    const {id}=useParams()
-    const [packageDetails,setPackageDetails] =useState([]);
-    const{user}=use(AuthContext)
-    const navigate =useNavigate();
-    console.log(id);
+  const { id } = useParams();
+  const [packageDetails, setPackageDetails] = useState(null);
+  const { user } = use(AuthContext);
+  const navigate = useNavigate();
 
-    
-  
-    useEffect(()=>{
-    axios.get(`https://tour-management-server-kappa.vercel.app/addPackage/${id}`)
-    .then(result=>{
-        console.log(result.data)
+  useEffect(() => {
+    axios
+      .get(`https://tour-management-server-kappa.vercel.app/addPackage/${id}`)
+      .then((result) => {
         setPackageDetails(result.data);
-    })
-    .catch(error=>{
-        console.log(error)
-    })
-    
-  },[id,user.accessToken])
-   const handleBookNow =(id)=>{
-          
-           axios.patch(`https://tour-management-server-kappa.vercel.app/addPackage/${id}`,{
-            headers:{
-                authorization:`Bearer ${user.accessToken}`
-            }
-           })
-            .then(result=>{
-                console.log("booking count updated",result.data)
-                
-    
-            })
-            .catch(error=>{
-                console.log(error)
-            })
-            navigate(`/bookNow/${id}`)
-           
-   }
-  
-    return (
-        <div className='w-11/12  mx-auto max-w-6xl '>
-      {
-          <div className="card lg:card-side bg-base-100 shadow-sm mt-8 mb-8">
-  <figure>
-    <img
-      src={packageDetails.image}
-      alt="Album" />
-  </figure>
-  <div className="card-body">
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }, [id, user.accessToken]);
 
-    <div className=''> 
-        
-                <div className='grid'>
-                    <div> 
-<img className='w-24 h-24 rounded-full' src={packageDetails?.['guide-photo']} alt="" />
-                    </div>
-                    
-                      <span>Name-{packageDetails?.['guide-name']}</span>
-                       <span>Contact No-{packageDetails?.contact}</span>
-                </div>
-                  <h2 className="card-title">Tour Name-{packageDetails?.['tour-name']}</h2>
-       <div className=''>
+  const handleBookNow = (id) => {
+    axios
+      .patch(
+        `https://tour-management-server-kappa.vercel.app/addPackage/${id}`,
+        {},
+        {
+          headers: {
+            authorization: `Bearer ${user.accessToken}`,
+          },
+        }
+      )
+      .then((result) => {
+        console.log('Booking count updated', result.data);
+        navigate(`/bookNow/${id}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-            <h1>Duration-{packageDetails.duration}</h1>
-            <h1>Price-{packageDetails.price}</h1>
-            <h1>Full Description - <span className='w-2/5'>{packageDetails.details}</span></h1>
-           </div>          
-               
+  if (!packageDetails) {
+    return <div className="w-11/12 mx-auto p-4">Loading...</div>;
+  }
 
-           </div>
+  return (
+    <div className="w-11/12 max-w-6xl mx-auto my-10">
+      <div className="card lg:card-side bg-base-100 shadow-lg p-6 rounded-xl">
+        <figure className="lg:w-1/2">
+          <img
+            src={packageDetails.image}
+            alt={packageDetails?.['tour-name']}
+            className="rounded-xl w-full h-full object-cover"
+          />
+        </figure>
+
+        <div className="card-body lg:w-1/2 space-y-4">
+          {/* Guide Info */}
+          <div className="flex gap-4 items-center">
+            <img
+              className="w-20 h-20 rounded-full shadow-lg"
+              src={packageDetails?.['guide-photo']}
+              alt="Guide"
+            />
             <div>
-            <h1>Departure Location-{packageDetails.location}</h1>
-            <p>Date-{packageDetails.date}</p>
-            <p>Destination-{packageDetails.destination}</p>
-           </div>
-           <p>Booking Count-{packageDetails.bookingCount}</p>
+              <h2 className="text-pink-600 font-bold text-lg">
+                {packageDetails?.['guide-name']}
+              </h2>
+              <p className="text-pink-400 text-sm">
+                Contact: {packageDetails?.contact}
+              </p>
+            </div>
+          </div>
 
-            
-  <button onClick={()=>handleBookNow(packageDetails._id)} className='btn btn-info'>
-                  Book now!!! </button>
-           
-        
-    
-  </div>
-</div>}
+          {/* Tour Title */}
+          <h2 className="text-2xl font-bold text-pink-600 mt-4">
+            {packageDetails?.['tour-name']}
+          </h2>
+
+          {/* Details */}
+          <div className="space-y-1 text-pink-400 text-sm">
+            <p>
+              <span className="text-pink-600 font-semibold">Duration:</span>{' '}
+              {packageDetails?.duration}
+            </p>
+            <p>
+              <span className="text-pink-600 font-semibold">Price:</span>{' '}
+              ${packageDetails?.price}
+            </p>
+            <p>
+              <span className="text-pink-600 font-semibold">Description:</span>{' '}
+              {packageDetails?.details}
+            </p>
+            <p>
+              <span className="text-pink-600 font-semibold">Location:</span>{' '}
+              {packageDetails?.location}
+            </p>
+            <p>
+              <span className="text-pink-600 font-semibold">Date:</span>{' '}
+              {packageDetails?.date}
+            </p>
+            <p>
+              <span className="text-pink-600 font-semibold">Destination:</span>{' '}
+              {packageDetails?.destination}
+            </p>
+            <p>
+              <span className="text-pink-600 font-semibold">Booking Count:</span>{' '}
+              {packageDetails?.bookingCount}
+            </p>
+          </div>
+
+          {/* Book Now Button */}
+          <div className="mt-6">
+            <button
+              onClick={() => handleBookNow(packageDetails._id)}
+              className="btn button-secondary w-full"
+            >
+              Book Now
+            </button>
+          </div>
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 export default PackageDetails;

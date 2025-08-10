@@ -26,22 +26,23 @@ const partners = [
 
 const Partners = () => {
   return (
-    <section className="w-11/12 mx-auto py-12">
-      <div className="text-center mb-10">
+    <section className="py-12 mx-auto">
+      <div className="text-center mb-10 ">
         <h2 className="text-3xl font-bold text-pink-600">Our Trusted Partners</h2>
         <p className="text-pink-400 mt-2">
           We proudly collaborate with global travel leaders to provide the best experiences for you.
         </p>
       </div>
 
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center justify-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5
+       gap-8 mx-auto">
         {partners.map((partner) => (
           <div  className="flex mx-auto justify-center items-center">
            <div >
              <img data-aos="zoom-in-out"
               src={partner.logo}
               alt={partner.name}
-              className=" w-40 h-40  object-contain grayscale
+              className="w-40 h-40  object-contain grayscale
                hover:grayscale-0 transition duration-300"
             />
          <h2 data-aos='flip-right' className="text-xl font-bold text-pink-600">{partner.name}</h2>

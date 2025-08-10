@@ -3,10 +3,10 @@
 
 :root {
 --text: #c94ba9;
---background: #fcfafc;
---primary: #d1b5ca;
---secondary: #d893c7;
---accent: #f0b4e1
+--background: #f3e1f3;
+--primary: #f187d6;
+--secondary: #f3c5e7;
+--accent:  #ead3e4;
 
 }
 
@@ -31,4 +31,10 @@
 }
 .bg-secondary-b{
     background-color: var(--secondary);
+}
+.custom{
+    color: var(--text);
+}
+.text{
+    color:#c94ba9
 }
