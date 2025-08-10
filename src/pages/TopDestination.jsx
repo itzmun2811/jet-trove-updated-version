@@ -43,7 +43,7 @@ const TopDestination = () => {
       </div>
 
 
-      <div  data-aos="flip-up-down"
+      <div  data-aos="fade-up-right"
      data-aos-duration="3000"   className="grid grid-cols-1  gap-8">
         {destinations.map((place) => (
           <div

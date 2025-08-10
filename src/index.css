@@ -6,7 +6,7 @@
 --background: #fcfafc;
 --primary: #d1b5ca;
 --secondary: #d893c7;
---accent: #f0b4e1;
+--accent: #f0b4e1
 
 }
 
@@ -15,7 +15,7 @@
 
   background-color: var(--accent);
   color: white;
-};
+}
 .bg-custom{
  background-color: var(--background);
 }
@@ -31,10 +31,4 @@
 }
 .bg-secondary-b{
     background-color: var(--secondary);
-}
-.custom{
-    color: var(--text);
-}
-.text{
-    color:#c94ba9
 }
