@@ -25,15 +25,16 @@ const MainLayout = () => {
 
 
     return (
-        <div>
-            <Header onToggleTheme={toggleTheme} theme={theme}></Header>
-            <div  className='max-w-7xl   mx-auto '>
-<Outlet></Outlet>
-            </div>
+       <div className="flex flex-col min-h-screen">
+  <Header onToggleTheme={toggleTheme} theme={theme} />
+  
+  <main className="flex-grow max-w-7xl mx-auto w-full">
+    <Outlet />
+  </main>
 
-            <Footer></Footer>
-
-        </div>
+  <Footer />
+</div>
+        
     );
 };
 
