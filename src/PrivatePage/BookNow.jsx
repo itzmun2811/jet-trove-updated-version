@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import Loading from '../pages/Loading';
 
 const BookNow = () => {
   const { id } = useParams();
@@ -58,7 +59,7 @@ const BookNow = () => {
 
   if (!bookInfo || loading) {
     return (
-      <p className="text-center w-11/12 mx-auto p-4">Loading... Please wait</p>
+<Loading></Loading>
     );
   }
 

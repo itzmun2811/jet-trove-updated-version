@@ -1,11 +1,13 @@
 import axios from 'axios';
-import React, { use, useEffect, useState } from 'react';
+import React, { use, useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { toast } from 'react-toastify';
+import Loading from '../pages/Loading';
 
 const MyBookings = () => {
-  const { user } = use(AuthContext);
+  const { user } = useContext(AuthContext);
   const [booking, setBooking] = useState([]);
+   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     axios
@@ -16,12 +18,13 @@ const MyBookings = () => {
       })
       .then((result) => {
         setBooking(result.data);
+        setLoading(false)
       })
       .catch((error) => {
         console.log(error);
       });
   }, [user]);
-
+ if(loading) <Loading></Loading>
   const handleConfirm = (id) => {
     axios
       .patch(
@@ -43,6 +46,10 @@ const MyBookings = () => {
         console.log(error);
       });
   };
+
+  if(loading){
+    return <Loading></Loading>
+  }
 
   return (
     <div className="w-11/12 mx-auto mt-10 p-6">
@@ -95,9 +102,6 @@ const MyBookings = () => {
           </tbody>
         </table>
 
-        {booking.length === 0 && (
-          <p className="text-center text-pink-400 py-4">No bookings found.</p>
-        )}
       </div>
     </div>
   );

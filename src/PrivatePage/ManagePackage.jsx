@@ -1,14 +1,16 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { use, useContext, useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import Loading from '../pages/Loading';
 
 const ManagePackage = () => {
 
-     const {user} =use(AuthContext);
+     const {user} =useContext(AuthContext);
      const[info,setInfo] =useState([]);
      const navigate =useNavigate();
+      const [loading, setLoading] = useState(true);
      console.log(user.accessToken)
 
         useEffect(()=>{
@@ -20,6 +22,7 @@ const ManagePackage = () => {
             .then(result=>{
                 console.log(result)
                 setInfo(result.data)
+                setLoading(false)
             })
             .catch(error=>{
                  console.log(error)
@@ -39,7 +42,13 @@ const handleDelete = (id) => {
     confirmButtonText: "Yes, delete it!"
   }).then((result) => {
     if (result.isConfirmed) {
-      axios.delete(`https://tour-management-server-kappa.vercel.app/addPackage/${id}`)
+      axios.delete(`https://tour-management-server-kappa.vercel.app/addPackage/${id}`,
+         {
+          headers: {
+            authorization: `Bearer ${user.accessToken}`,
+          },
+        }
+      )
         .then((res) => {
           if (res.data.deletedCount > 0) {
             Swal.fire("Deleted!", "Your file has been deleted.", "success");
@@ -59,7 +68,9 @@ const handleDelete = (id) => {
             navigate(`/updatePackage/${id}`)
         }
 
-
+ if(loading){
+  <Loading></Loading>
+ }
     return (
         <div className='w-11/12 mx-auto max-w-6xl my-12'>
             

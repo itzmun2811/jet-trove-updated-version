@@ -65,7 +65,7 @@ const Banner1 = () => {
            {description}
                   </p>
                   <NavLink to="/allPackages">
-                    <button className="btn btn-info bg-white text-sky-700 font-semibold hover:bg-sky-100 transition px-8 py-3 rounded-lg">
+                    <button className="btn btn-outline bg-white text-pink-600 font-semibold hover:bg-sky-100 transition px-8 py-3 rounded-lg">
                       Explore Now!!
                     </button>
                   </NavLink>

@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { use, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../context/AuthContext';
+import Loading from '../pages/Loading';
 
 const PackageDetails = () => {
   const { id } = useParams();
@@ -23,8 +24,8 @@ const PackageDetails = () => {
   const handleBookNow = (id) => {
     axios
       .patch(
-        `https://tour-management-server-kappa.vercel.app/addPackage/${id}`,
-        {},
+        `https://tour-management-server-kappa.vercel.app/addPackage/${id}`,{},
+    
         {
           headers: {
             authorization: `Bearer ${user.accessToken}`,
@@ -41,7 +42,7 @@ const PackageDetails = () => {
   };
 
   if (!packageDetails) {
-    return <div className="w-11/12 mx-auto p-4">Loading...</div>;
+    return <Loading></Loading>;
   }
 
   return (

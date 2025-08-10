@@ -22,7 +22,12 @@ const AddPackage = () => {
             bookingCount:0,
         }
         console.log(newPackageData)
-        axios.post("https://tour-management-server-kappa.vercel.app/addPackage",newPackageData,
+        axios.post("https://tour-management-server-kappa.vercel.app/addPackage",
+            newPackageData, {
+    headers: {
+     authorization:`Bearer ${user.accessToken}`
+    }
+  }
        
            
         )
@@ -96,17 +101,17 @@ const AddPackage = () => {
 
   <div className='flex gap-4'>
     <label className="label text-pink-600">Guide Name</label>
-    <input type="text" name='guide-name' className="input text-pink-400" defaultValue={user.displayName} />
+    <input readOnly type="text" name='guide-name' className="input text-pink-400" defaultValue={user.displayName} />
   </div>
 
   <div className='flex gap-4'>
     <label className="label text-pink-600">Guide Photo</label>
-    <input type="text" name='guide-photo' className="input text-pink-400" defaultValue={user.photoURL} />
+    <input readOnly type="text" name='guide-photo' className="input text-pink-400" defaultValue={user.photoURL} />
   </div>
 
   <div className='flex gap-4'>
     <label className="label text-pink-600">Guide Email</label>
-    <input type="text" name='guide-email' className="input text-pink-400" defaultValue={user.email} />
+    <input readOnly type="text" name='guide-email' className="input text-pink-400" defaultValue={user.email} />
   </div>
 
 </fieldset>

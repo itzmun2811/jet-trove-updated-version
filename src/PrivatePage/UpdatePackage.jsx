@@ -1,13 +1,15 @@
 import axios from 'axios';
-import React, { use, useEffect, useState } from 'react';
+import React, { use, useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import { useParams } from 'react-router';
 import { toast } from 'react-toastify';
+import Loading from '../pages/Loading';
 
 const UpdatePackage = () => {
- const {user} =use(AuthContext);
+ const {user} =useContext(AuthContext);
  const {id} =useParams()
  const[formData,setFormData]=useState([]);
+  const [loading, setLoading] = useState(true);
     
   
   useEffect(()=>{
@@ -15,6 +17,7 @@ const UpdatePackage = () => {
     .then(result=>{
         console.log(result.data)
         setFormData(result.data)
+        setLoading(false);
     })
     .catch(error=>{
         console.log(error)
@@ -41,7 +44,9 @@ const UpdatePackage = () => {
             console.log(error);
         })
      }
-
+ if(loading){
+  return <Loading></Loading>
+ }
 
   return (
         <>
@@ -125,7 +130,7 @@ const UpdatePackage = () => {
 
 </fieldset>
 
-        <button className='btn btn-neutral w-1/2' type="submit">update</button>
+        <button className='btn button-primary w-1/2' type="submit">update</button>
       </div>
     </div>
   </div>

@@ -11,13 +11,13 @@ const Header = ({ onToggleTheme, theme }) => {
   
 
   const links=<>
-  <NavLink to="/">Home</NavLink>
+  <NavLink className='mx-3'  to="/">Home</NavLink>
   <NavLink className='mx-3' to="/allPackages">All Packages</NavLink>
-  <NavLink className='mr-3' to="/about">About Us</NavLink>
+  <NavLink className='mx-3' to="/about">About Us</NavLink>
   {user && <>
-  <NavLink to='/mybookings'>My Bookings</NavLink>
+  <NavLink className='mx-3' to='/mybookings'>My Bookings</NavLink>
   <NavLink className='mx-3' to='/addPackage'>Add Package</NavLink>
-  <NavLink to='/managePackage'>Manage Package
+  <NavLink className='mx-3' to='/managePackage'>Manage Package
     </NavLink>
   </>
   
@@ -32,13 +32,13 @@ const Header = ({ onToggleTheme, theme }) => {
     return (
        <>
 <div className="navbar w-full bg-background
- mx-auto mb-6  sticky top-0 z-50 
+  mb-6  sticky top-0 z-50 
    shadow-sm
- py-1 px-2
+ py-1 
  
  
  ">
-  <div className='w-11/12 mx-auto px-4 flex items-center justify-center'>
+  <div className='container  mx-auto px-6 flex items-center justify-between'>
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -46,7 +46,7 @@ const Header = ({ onToggleTheme, theme }) => {
       </div>
       <ul
         tabIndex={0}
-        className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+        className="menu menu-sm dropdown-content bg-base-100  text-pink-600 rounded-box z-1 mt-3 w-52 p-2 shadow">
       {links}
       </ul>
     </div>
@@ -65,7 +65,7 @@ const Header = ({ onToggleTheme, theme }) => {
      {links}
     </ul>
   </div>
-  <div className="navbar-end">
+  <div className="navbar-end flex items-center gap-2">
 {(user) ? 
    
    <>
@@ -83,7 +83,7 @@ const Header = ({ onToggleTheme, theme }) => {
    rounded-box z-1 w-32 md:w-44 lg:w-52 p-2 md:mr-4 lg:mr-8 shadow-sm">
   
 
-       <li><button onClick={handleLogOut}>Logout</button></li> 
+       <li><button className='text-pink-600' onClick={handleLogOut}>Logout</button></li> 
   </ul>
 </div>
 

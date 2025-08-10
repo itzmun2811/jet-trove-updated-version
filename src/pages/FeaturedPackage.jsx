@@ -80,7 +80,7 @@ const FeaturedPackage = () => {
 
             
                 <button
-                  onClick={() => navigate(`/packages/${singlePackage._id}`)}
+                  onClick={() => navigate(`/allPackages`)}
                   className="mt-auto w-full button-primary py-2 px-4 bg-sky-600 text-white rounded-lg hover:bg-sky-700 transition"
                 >
                   View Details
