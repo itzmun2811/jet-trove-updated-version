@@ -33,45 +33,48 @@ const destinations = [
 
 const TopDestination = () => {
   return (
-    <section  className="lg:w-11/12 mx-auto px-4 py-12">
+    <section  className="lg:w-11/12 mx-auto px-4 py-12 ">
     
       <div  className="text-center mb-12">
-        <h2 className="text-4xl font-bold text-primary mb-4">Top Destinations in Bangladesh</h2>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <h2 className="text-4xl font-bold text-pink-700 mb-4">Top Destinations in Bangladesh</h2>
+        <p className="text-pink-400 max-w-2xl mx-auto">
           Discover the most iconic travel spots, each rich in history, culture, and breathtaking scenery. Whether you're a beach lover or a history buff, there's something for everyone.
         </p>
       </div>
 
 
-      <div  data-aos="flip-up"
-     data-aos-duration="3000"   className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div  data-aos="flip-up-down"
+     data-aos-duration="3000"   className="grid grid-cols-1  gap-8">
         {destinations.map((place) => (
           <div
       
-            className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-xl transition duration-300"
+            className=" shadow-md rounded-xl 
+            overflow-hidden hover:shadow-xl transition duration-300"
           >
-            <img
+           
+<img
               src={place.img}
               alt={place.title}
-              className="w-full h-52 object-cover"
+              className="w-full h-64 object-cover"
             />
             <div className="p-5 flex flex-col h-full">
-              <h3 className="text-xl font-bold text-gray-800 mb-2">{place.title}</h3>
-              <p className="text-sm text-gray-600 mb-2">
-                <span className="font-semibold text-gray-700">History:</span> {place.history}
+              <h3 className="text-xl font-bold text-pink-700 mb-2">{place.title}</h3>
+              <p className="text-sm text-pink-400 mb-2">
+                <span className="font-semibold text-pink-600">History:</span> {place.history}
               </p>
-              <p className="text-sm text-gray-600 mb-4">
-                <span className="font-semibold text-gray-700">Popular For:</span> {place.popularFor}
+              <p className="text-sm text-pink-400 mb-4">
+                <span className="font-semibold text-pink-700">Popular For:</span> {place.popularFor}
               </p>
               <a
                 href={place.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-auto inline-block bg-primary text-white text-sm font-semibold px-4 py-2 rounded hover:bg-pink-700 transition"
+                className="mt-auto inline-block bg-primary text-pink-700 text-sm font-semibold px-4 py-2 rounded hover:bg-pink-700 transition"
               >
-                Learn More
+                Learn More-{place.link}
               </a>
             </div>
+           
           </div>
         ))}
       </div>

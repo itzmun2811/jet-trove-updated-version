@@ -23,8 +23,8 @@ const FeaturedPackage = () => {
     <div className="mx-auto w-full m-4 px-4 sm:px-6 lg:px-8">
 
       <div className="text-center my-10 w-full">
-        <h2 className="text-3xl font-bold text mb-4">Featured Tour Packages</h2>
-        <p className="max-w-2xl mx-auto custom">
+        <h2 className="text-3xl font-bold text-pink-700 mb-4">Featured Tour Packages</h2>
+        <p className="max-w-2xl mx-auto text-pink-400">
           Embark on an unforgettable journey with our expertly curated travel experiences. Guided by professionals, each tour offers comfort, adventure, and culture — all in one.
         </p>
       </div>

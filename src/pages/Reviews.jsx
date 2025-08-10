@@ -40,11 +40,11 @@ const Reviews = () => {
       data-aos-anchor-placement="center-bottom"
       className="w-11/12 mx-auto my-12"
     >
-      <div className="shadow-lg p-6 rounded-2xl bg-white">
+      <div className=" rounded-2xl bg-white">
         <h2 className="text-center text-pink-700 font-bold text-xl md:text-2xl lg:text-3xl mb-4">
           Loved By Explorers Like You
         </h2>
-        <p className="text-center text-gray-600 max-w-3xl mx-auto mb-6">
+        <p className="text-center text-pink-400 max-w-3xl mx-auto mb-6">
           Discover what our travelers say about their experiences with us. From breathtaking
           destinations to caring guides, our guests share real stories that inspire new journeys.
           Your adventure could be next!
